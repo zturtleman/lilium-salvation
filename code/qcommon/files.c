@@ -563,6 +563,7 @@ static void FS_CheckFilenameIsMutable( const char *filename,
 	// Check if the filename ends with the library, QVM, or pk3 extension
 	if( COM_CompareExtension( filename, DLL_EXT )
 		|| COM_CompareExtension( filename, ".qvm" )
+		|| COM_CompareExtension( filename, ".ds1" )
 		|| COM_CompareExtension( filename, ".pk3" ) )
 	{
 		Com_Error( ERR_FATAL, "%s: Not allowed to manipulate '%s' due "
@@ -2059,7 +2060,7 @@ static pack_t *FS_LoadZipFile(const char *zipfile, const char *basename)
 	Q_strncpyz( pack->pakBasename, basename, sizeof( pack->pakBasename ) );
 
 	// strip .pk3 if needed
-	if ( strlen( pack->pakBasename ) > 4 && !Q_stricmp( pack->pakBasename + strlen( pack->pakBasename ) - 4, ".pk3" ) ) {
+	if ( strlen( pack->pakBasename ) > 4 && !Q_stricmp( pack->pakBasename + strlen( pack->pakBasename ) - 4, ".ds1" ) ) {
 		pack->pakBasename[strlen( pack->pakBasename ) - 4] = 0;
 	}
 
@@ -2523,7 +2524,7 @@ int	FS_GetModList( char *listbuf, int bufsize ) {
 			//   we will try each three of them here (yes, it's a bit messy)
 			path = FS_BuildOSPath( fs_basepath->string, name, "" );
 			nPaks = 0;
-			pPaks = Sys_ListFiles(path, ".pk3", NULL, &nPaks, qfalse); 
+			pPaks = Sys_ListFiles(path, ".ds1", NULL, &nPaks, qfalse); 
 			Sys_FreeFileList( pPaks ); // we only use Sys_ListFiles to check wether .pk3 files are present
 
 			/* try on home path */
@@ -2531,7 +2532,7 @@ int	FS_GetModList( char *listbuf, int bufsize ) {
 			{
 				path = FS_BuildOSPath( fs_homepath->string, name, "" );
 				nPaks = 0;
-				pPaks = Sys_ListFiles( path, ".pk3", NULL, &nPaks, qfalse );
+				pPaks = Sys_ListFiles( path, ".ds1", NULL, &nPaks, qfalse );
 				Sys_FreeFileList( pPaks );
 			}
 
@@ -2895,7 +2896,7 @@ void FS_AddGameDirectory( const char *path, const char *dir ) {
 	curpath[strlen(curpath) - 1] = '\0';	// strip the trailing slash
 
 	// Get .pk3 files
-	pakfiles = Sys_ListFiles(curpath, ".pk3", NULL, &numfiles, qfalse);
+	pakfiles = Sys_ListFiles(curpath, ".ds1", NULL, &numfiles, qfalse);
 
 	qsort( pakfiles, numfiles, sizeof(char*), paksort );
 
@@ -3008,7 +3009,8 @@ qboolean FS_idPak(char *pak, char *base, int numPaks)
 	int i;
 
 	for (i = 0; i < NUM_ID_PAKS; i++) {
-		if ( !FS_FilenameCompare(pak, va("%s/pak%d", base, i)) ) {
+		// darks: "%s/darks%d", q3: "%s/pak%d"
+		if ( !FS_FilenameCompare(pak, va("%s/darks%d", base, i)) ) {
 			break;
 		}
 	}
@@ -3115,23 +3117,23 @@ qboolean FS_ComparePaks( char *neededpaks, int len, qboolean dlstring ) {
 				// Remote name
 				Q_strcat( neededpaks, len, "@");
 				Q_strcat( neededpaks, len, fs_serverReferencedPakNames[i] );
-				Q_strcat( neededpaks, len, ".pk3" );
+				Q_strcat( neededpaks, len, ".ds1" );
 
 				// Local name
 				Q_strcat( neededpaks, len, "@");
 				// Do we have one with the same name?
-				if ( FS_SV_FileExists( va( "%s.pk3", fs_serverReferencedPakNames[i] ) ) )
+				if ( FS_SV_FileExists( va( "%s.ds1", fs_serverReferencedPakNames[i] ) ) )
 				{
 					char st[MAX_ZPATH];
 					// We already have one called this, we need to download it to another name
 					// Make something up with the checksum in it
-					Com_sprintf( st, sizeof( st ), "%s.%08x.pk3", fs_serverReferencedPakNames[i], fs_serverReferencedPaks[i] );
+					Com_sprintf( st, sizeof( st ), "%s.%08x.ds1", fs_serverReferencedPakNames[i], fs_serverReferencedPaks[i] );
 					Q_strcat( neededpaks, len, st );
 				}
 				else
 				{
 					Q_strcat( neededpaks, len, fs_serverReferencedPakNames[i] );
-					Q_strcat( neededpaks, len, ".pk3" );
+					Q_strcat( neededpaks, len, ".ds1" );
 				}
 
 				// Find out whether it might have overflowed the buffer and don't add this file to the
@@ -3145,9 +3147,9 @@ qboolean FS_ComparePaks( char *neededpaks, int len, qboolean dlstring ) {
 			else
 			{
 				Q_strcat( neededpaks, len, fs_serverReferencedPakNames[i] );
-				Q_strcat( neededpaks, len, ".pk3" );
+				Q_strcat( neededpaks, len, ".ds1" );
 				// Do we have one with the same name?
-				if ( FS_SV_FileExists( va( "%s.pk3", fs_serverReferencedPakNames[i] ) ) )
+				if ( FS_SV_FileExists( va( "%s.ds1", fs_serverReferencedPakNames[i] ) ) )
 				{
 					Q_strcat( neededpaks, len, " (local file exists with wrong checksum)");
 				}

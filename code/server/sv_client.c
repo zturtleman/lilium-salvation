@@ -957,7 +957,7 @@ int SV_WriteDownloadToClient(client_t *cl, msg_t *msg)
 			*pakptr = '\0';
 
 			// Check for pk3 filename extension
-			if(!Q_stricmp(pakptr + 1, "pk3"))
+			if(!Q_stricmp(pakptr + 1, "ds1"))
 			{
 				const char *referencedPaks = FS_ReferencedPakNames();
 

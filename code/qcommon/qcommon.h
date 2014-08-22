@@ -591,15 +591,15 @@ issues.
 #define FS_UI_REF		0x02
 #define FS_CGAME_REF	0x04
 // number of id paks that will never be autodownloaded from baseq3/missionpack
-#define NUM_ID_PAKS		9
+#define NUM_ID_PAKS		5 // darks: 5, q3: 9
 #define NUM_TA_PAKS		4
 
 #define	MAX_FILE_HANDLES	64
 
 #ifdef DEDICATED
-#	define Q3CONFIG_CFG "q3config_server.cfg"
+#	define Q3CONFIG_CFG "dsconfig_server.cfg"
 #else
-#	define Q3CONFIG_CFG "q3config.cfg"
+#	define Q3CONFIG_CFG "dsconfig.cfg"
 #endif
 
 qboolean FS_Initialized( void );

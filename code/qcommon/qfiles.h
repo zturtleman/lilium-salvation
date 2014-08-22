@@ -313,7 +313,7 @@ typedef struct {
 #define BSP_IDENT	(('P'<<24)+('S'<<16)+('B'<<8)+'I')
 		// little-endian "IBSP"
 
-#define BSP_VERSION			46
+#define BSP_VERSION			666 // darks: 666, q3: 46
 
 
 // there shouldn't be any problem with increasing these values at the

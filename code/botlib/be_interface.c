@@ -175,10 +175,12 @@ int Export_BotLibSetup(void)
 	if (errnum != BLERR_NOERROR) return errnum;
 	errnum = EA_Setup();			//be_ea.c
 	if (errnum != BLERR_NOERROR) return errnum;
+#if 0 // darks: weapons.c/items.c does not exist
 	errnum = BotSetupWeaponAI();	//be_ai_weap.c
 	if (errnum != BLERR_NOERROR)return errnum;
 	errnum = BotSetupGoalAI();		//be_ai_goal.c
 	if (errnum != BLERR_NOERROR) return errnum;
+#endif
 	errnum = BotSetupChatAI();		//be_ai_chat.c
 	if (errnum != BLERR_NOERROR) return errnum;
 	errnum = BotSetupMoveAI();		//be_ai_move.c
@@ -204,8 +206,10 @@ int Export_BotLibShutdown(void)
 	//
 	BotShutdownChatAI();		//be_ai_chat.c
 	BotShutdownMoveAI();		//be_ai_move.c
+#if 0 // darks: weapons.c/items.c does not exist
 	BotShutdownGoalAI();		//be_ai_goal.c
 	BotShutdownWeaponAI();		//be_ai_weap.c
+#endif
 	BotShutdownWeights();		//be_ai_weight.c
 	BotShutdownCharacters();	//be_ai_char.c
 	//shud down aas

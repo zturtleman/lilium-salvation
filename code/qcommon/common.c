@@ -38,7 +38,7 @@ int demo_protocols[] =
 
 #define MIN_DEDICATED_COMHUNKMEGS 1
 #define MIN_COMHUNKMEGS		56
-#define DEF_COMHUNKMEGS 	128
+#define DEF_COMHUNKMEGS 	256 // darks: 256, ioq3: 128
 #define DEF_COMZONEMEGS		24
 #define DEF_COMHUNKMEGS_S	XSTRING(DEF_COMHUNKMEGS)
 #define DEF_COMZONEMEGS_S	XSTRING(DEF_COMZONEMEGS)
@@ -2804,7 +2804,8 @@ void Com_Init( char *commandLine ) {
 	if ( !Com_AddStartupCommands() ) {
 		// if the user didn't give any commands, run default action
 		if ( !com_dedicated->integer ) {
-			Cbuf_AddText ("cinematic idlogo.RoQ\n");
+			// darks: mangledeyelogo.RoQ, q3: idlogo.RoQ
+			Cbuf_AddText ("cinematic mangledeyelogo.RoQ\n");
 			if( !com_introPlayed->integer ) {
 				Cvar_Set( com_introPlayed->name, "1" );
 				Cvar_Set( "nextmap", "cinematic intro.RoQ" );

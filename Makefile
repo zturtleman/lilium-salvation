@@ -18,19 +18,19 @@ ifeq ($(COMPILE_PLATFORM),darwin)
 endif
 
 ifndef BUILD_STANDALONE
-  BUILD_STANDALONE =
+  BUILD_STANDALONE = 1
 endif
 ifndef BUILD_CLIENT
   BUILD_CLIENT     =
 endif
 ifndef BUILD_SERVER
-  BUILD_SERVER     =
+  BUILD_SERVER     = 0
 endif
 ifndef BUILD_GAME_SO
-  BUILD_GAME_SO    =
+  BUILD_GAME_SO    = 0
 endif
 ifndef BUILD_GAME_QVM
-  BUILD_GAME_QVM   =
+  BUILD_GAME_QVM   = 0
 endif
 ifndef BUILD_BASEGAME
   BUILD_BASEGAME =
@@ -100,11 +100,11 @@ VERSION=1.36
 endif
 
 ifndef CLIENTBIN
-CLIENTBIN=ioquake3
+CLIENTBIN=ioq3-darks
 endif
 
 ifndef SERVERBIN
-SERVERBIN=ioq3ded
+SERVERBIN=ioq3-darks-ded
 endif
 
 ifndef BASEGAME
