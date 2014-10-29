@@ -417,6 +417,8 @@ qboolean PC_Int_Parse(int handle, int *i) {
 	pc_token_t token;
 	int negative = qfalse;
 
+	if (!i)
+		return qfalse;
 	if (!trap_PC_ReadToken(handle, &token))
 		return qfalse;
 	if (token.string[0] == '-') {
@@ -606,7 +608,7 @@ void Fade(int *flags, float *f, float clamp, int *nextTime, int offsetTime, qboo
 
 void Window_Paint(Window *w, float fadeAmount, float fadeClamp, float fadeCycle) {
   //float bordersize = 0;
-  vec4_t color;
+  vec4_t color = {0};
   rectDef_t fillRect = w->rect;
 
 
@@ -4128,6 +4130,10 @@ menuDef_t *Menus_ActivateByName(const char *p) {
 
 
 void Item_Init(itemDef_t *item) {
+	if (item == NULL) {
+		return;
+	}
+
 	memset(item, 0, sizeof(itemDef_t));
 	item->textscale = 0.55f;
 	Window_Init(&item->window);
@@ -4197,12 +4203,12 @@ void Menu_HandleMouseMove(menuDef_t *menu, float x, float y) {
 						}
 					}
 				}
-      } else if (menu->items[i]->window.flags & WINDOW_MOUSEOVER) {
-          Item_MouseLeave(menu->items[i]);
-          Item_SetMouseOver(menu->items[i], qfalse);
-      }
-    }
-  }
+			} else if (menu->items[i] && menu->items[i]->window.flags & WINDOW_MOUSEOVER) {
+				Item_MouseLeave(menu->items[i]);
+				Item_SetMouseOver(menu->items[i], qfalse);
+			}
+		}
+	}
 
 }
 
@@ -5512,6 +5518,9 @@ qboolean MenuParse_itemDef( itemDef_t *item, int handle ) {
 	menuDef_t *menu = (menuDef_t*)item;
 	if (menu->itemCount < MAX_MENUITEMS) {
 		menu->items[menu->itemCount] = UI_Alloc(sizeof(itemDef_t));
+		if (!menu->items[menu->itemCount]) {
+			return qfalse;
+		}
 		Item_Init(menu->items[menu->itemCount]);
 		if (!Item_Parse(handle, menu->items[menu->itemCount])) {
 			return qfalse;

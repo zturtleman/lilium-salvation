@@ -247,8 +247,13 @@ static keyNum_t IN_TranslateSDLToQ3Key( SDL_Keysym *keysym, qboolean down )
 			case SDLK_LCTRL:
 			case SDLK_RCTRL:        key = K_CTRL;          break;
 
+#ifdef MACOS_X
 			case SDLK_RGUI:
 			case SDLK_LGUI:         key = K_COMMAND;       break;
+#else
+			case SDLK_RGUI:
+			case SDLK_LGUI:         key = K_SUPER;         break;
+#endif
 
 			case SDLK_RALT:
 			case SDLK_LALT:         key = K_ALT;           break;
@@ -266,9 +271,11 @@ static keyNum_t IN_TranslateSDLToQ3Key( SDL_Keysym *keysym, qboolean down )
 			case SDLK_PRINTSCREEN:  key = K_PRINT;         break;
 			case SDLK_SYSREQ:       key = K_SYSREQ;        break;
 			case SDLK_MENU:         key = K_MENU;          break;
+			case SDLK_APPLICATION:	key = K_MENU;          break;
 			case SDLK_POWER:        key = K_POWER;         break;
 			case SDLK_UNDO:         key = K_UNDO;          break;
 			case SDLK_SCROLLLOCK:   key = K_SCROLLOCK;     break;
+			case SDLK_NUMLOCKCLEAR: key = K_KP_NUMLOCK;    break;
 			case SDLK_CAPSLOCK:     key = K_CAPSLOCK;      break;
 
 			default:
@@ -909,20 +916,6 @@ void IN_Frame( void )
 
 /*
 ===============
-IN_InitKeyLockStates
-===============
-*/
-void IN_InitKeyLockStates( void )
-{
-	const unsigned char *keystate = SDL_GetKeyboardState(NULL);
-
-	keys[K_SCROLLOCK].down = keystate[SDL_SCANCODE_SCROLLLOCK];
-	keys[K_KP_NUMLOCK].down = keystate[SDL_SCANCODE_NUMLOCKCLEAR];
-	keys[K_CAPSLOCK].down = keystate[SDL_SCANCODE_CAPSLOCK];
-}
-
-/*
-===============
 IN_Init
 ===============
 */
@@ -957,8 +950,6 @@ void IN_Init( void *windowData )
 	appState = SDL_GetWindowFlags( SDL_window );
 	Cvar_SetValue( "com_unfocused",	!( appState & SDL_WINDOW_INPUT_FOCUS ) );
 	Cvar_SetValue( "com_minimized", appState & SDL_WINDOW_MINIMIZED );
-
-	IN_InitKeyLockStates( );
 
 	IN_InitJoystick( );
 	Com_DPrintf( "------------------------------------\n" );

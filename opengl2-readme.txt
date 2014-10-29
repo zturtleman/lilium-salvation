@@ -79,12 +79,6 @@ Cvars for simple rendering features:
                                      0 - No. (default)
                                      1 - Yes.
 
-  r_softOverbright               - Enable software overbrighting.  This enables
-                                   overbrighting even in a window.  Is disabled
-                                   when r_toneMap 1 and r_hdr 1.
-                                     0 - No.
-                                     1 - Yes. (default)
-
 Cvars for HDR and tonemapping:
   r_hdr                          - Do scene rendering in a framebuffer with
                                    high dynamic range.  (Less banding, and
@@ -554,7 +548,7 @@ There are currently two ways to use this in your own (and other people's) maps.
         surfaceparm nolightmap
         surfaceparm sky
         q3map_sunExt 240 238 200 100 195 35 3 16
-        q3gl2_sun 240 238 200 50 195 35 3 1.0 0.2
+        q3gl2_sun 240 238 200 50 195 35 1.0 0.2
         q3map_skylight 50 16
         q3map_lightimage $whiteimage
 
@@ -577,7 +571,7 @@ There are currently two ways to use this in your own (and other people's) maps.
         surfaceparm noimpact
         surfaceparm nolightmap
         surfaceparm sky
-        q3gl2_sun 240 238 200 50 195 35 3 0.5 0.2
+        q3gl2_sun 240 238 200 50 195 35 0.5 0.2
         q3map_skylight 50 16
         q3map_lightimage $whiteimage
 
