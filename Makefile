@@ -111,11 +111,11 @@ VERSION=1.36
 endif
 
 ifndef CLIENTBIN
-CLIENTBIN=ioq3-darks
+CLIENTBIN=liliumsal
 endif
 
 ifndef SERVERBIN
-SERVERBIN=ioq3-darks-ded
+SERVERBIN=liliumsalded
 endif
 
 ifndef BASEGAME
