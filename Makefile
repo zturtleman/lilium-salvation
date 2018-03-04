@@ -119,7 +119,7 @@ SERVERBIN=liliumsalded
 endif
 
 ifndef RENDERER_PREFIX
-RENDERER_PREFIX=renderer_
+RENDERER_PREFIX=liliumsal_renderer_
 endif
 
 ifndef BASEGAME
