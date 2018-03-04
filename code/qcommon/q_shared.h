@@ -31,9 +31,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
   #define BASEGAME					"darks"
   #define CLIENT_WINDOW_TITLE		"Lilium Salvation"
   #define CLIENT_WINDOW_MIN_TITLE	"liliumsal"
-  #define HOMEPATH_NAME_UNIX		".darksalvation"
-  #define HOMEPATH_NAME_WIN			"Dark Salvation"
-  #define HOMEPATH_NAME_MACOSX		HOMEPATH_NAME_WIN
+
+  // GNU/Linux: $HOME/.local/share/homepath-name (lower case and spaces replaced with hyphens)
+  // MacOS: $HOME/Library/Application Support/Homepath Name
+  // Windows: %APPDATA%\Homepath Name
+  #define HOMEPATH_NAME				"Lilium Salvation"
+
   //#define STEAMPATH_NAME			"Quake 3 Arena"
   //#define STEAMPATH_APPID			"2200"
   #define GAMENAME_FOR_MASTER		"DarkSalvation"	// must NOT contain whitespace
@@ -45,9 +48,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
   #define BASEGAME					"baseq3"
   #define CLIENT_WINDOW_TITLE		"ioquake3"
   #define CLIENT_WINDOW_MIN_TITLE	"ioq3"
-  #define HOMEPATH_NAME_UNIX		".q3a"
-  #define HOMEPATH_NAME_WIN			"Quake3"
-  #define HOMEPATH_NAME_MACOSX		HOMEPATH_NAME_WIN
+
+  // GNU/Linux: $HOME/.local/share/homepath-name (lower case and spaces replaced with hyphens)
+  // MacOS: $HOME/Library/Application Support/Homepath Name
+  // Windows: %APPDATA%\Homepath Name
+  #define HOMEPATH_NAME				"Lilium Quake3"
+
   #define STEAMPATH_NAME			"Quake 3 Arena"
   #define STEAMPATH_APPID			"2200"
   #define GOGPATH_ID				"1441704920"
@@ -66,6 +72,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define LEGACY_HEARTBEAT_FOR_MASTER	"QuakeArena-1"
 
 #define BASETA				"missionpack"
+
+#ifndef RENDERER_PREFIX
+  #define RENDERER_PREFIX "renderer_"
+#endif
 
 #ifndef PRODUCT_VERSION
   #define PRODUCT_VERSION "1.36"
