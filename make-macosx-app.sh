@@ -203,12 +203,12 @@ done
 cd `dirname $0`
 
 if [ ! -f Makefile ]; then
-	echo "$0 must be run from the ioquake3 build directory"
+	echo "$0 must be run from the Lilium Arena build directory"
 	exit 1
 fi
 
 if [ "${IOQ3_CLIENT_ARCHS}" == "" ]; then
-	echo "$0: no ioquake3 binary architectures were found for target '${TARGET_NAME}'"
+	echo "$0: no Lilium Arena binary architectures were found for target '${TARGET_NAME}'"
 	exit 1
 fi
 
@@ -308,6 +308,8 @@ PLIST="${PLIST}
     <string>${PRODUCT_NAME} Copyright © 1999-2005 id Software, 2005-2018 ioquake3 contributors.</string>
     <key>NSPrincipalClass</key>
     <string>NSApplication</string>
+    <key>NSHighResolutionCapable</key>
+    <false/>
 </dict>
 </plist>
 "

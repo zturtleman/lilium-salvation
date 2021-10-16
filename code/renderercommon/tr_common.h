@@ -80,6 +80,7 @@ extern glconfig_t	glConfig;		// outside of TR since it shouldn't be cleared duri
 extern qboolean  textureFilterAnisotropic;
 extern int       maxAnisotropy;
 extern float     displayAspect;
+extern qboolean  haveClampToEdge;
 
 //
 // cvars
@@ -155,7 +156,7 @@ IMPLEMENTATION SPECIFIC FUNCTIONS
 ====================================================================
 */
 
-void		GLimp_Init( qboolean );
+void		GLimp_Init( qboolean fixedFunction );
 void		GLimp_Shutdown( void );
 void		GLimp_EndFrame( void );
 

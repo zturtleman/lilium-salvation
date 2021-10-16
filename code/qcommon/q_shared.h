@@ -44,15 +44,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
   #define CINEMATICS_INTRO		"intro.RoQ"
 //  #define LEGACY_PROTOCOL	// You probably don't need this for your standalone game
 #else
-  #define PRODUCT_NAME				"ioq3"
+  #define PRODUCT_NAME				"Lilium Arena"
   #define BASEGAME					"baseq3"
-  #define CLIENT_WINDOW_TITLE		"ioquake3"
-  #define CLIENT_WINDOW_MIN_TITLE	"ioq3"
+  #define CLIENT_WINDOW_TITLE		"Lilium Arena"
+  #define CLIENT_WINDOW_MIN_TITLE	"Lilium Arena"
 
   // GNU/Linux: $HOME/.local/share/homepath-name (lower case and spaces replaced with hyphens)
   // MacOS: $HOME/Library/Application Support/Homepath Name
   // Windows: %APPDATA%\Homepath Name
-  #define HOMEPATH_NAME				"Lilium Quake3"
+  #define HOMEPATH_NAME				"Lilium Arena"
 
   #define STEAMPATH_NAME			"Quake 3 Arena"
   #define STEAMPATH_APPID			"2200"
@@ -378,6 +378,8 @@ typedef vec_t vec3_t[3];
 typedef vec_t vec4_t[4];
 typedef vec_t vec5_t[5];
 
+typedef vec_t quat_t[4];
+
 typedef	int	fixed4_t;
 typedef	int	fixed8_t;
 typedef	int	fixed16_t;
@@ -419,7 +421,7 @@ extern	vec4_t		colorMdGrey;
 extern	vec4_t		colorDkGrey;
 
 #define Q_COLOR_ESCAPE	'^'
-#define Q_IsColorString(p)	((p) && *(p) == Q_COLOR_ESCAPE && *((p)+1) && isalnum(*((p)+1))) // ^[0-9a-zA-Z]
+qboolean Q_IsColorString(const char *p);  // ^[0-9a-zA-Z]
 
 #define COLOR_BLACK	'0'
 #define COLOR_RED	'1'
@@ -587,6 +589,8 @@ typedef struct {
 #define Vector4Copy(a,b)		((b)[0]=(a)[0],(b)[1]=(a)[1],(b)[2]=(a)[2],(b)[3]=(a)[3])
 
 #define Byte4Copy(a,b)			((b)[0]=(a)[0],(b)[1]=(a)[1],(b)[2]=(a)[2],(b)[3]=(a)[3])
+
+#define QuatCopy(a,b)			((b)[0]=(a)[0],(b)[1]=(a)[1],(b)[2]=(a)[2],(b)[3]=(a)[3])
 
 #define	SnapVector(v) {v[0]=((int)(v[0]));v[1]=((int)(v[1]));v[2]=((int)(v[2]));}
 // just in case you don't want to use the macros
