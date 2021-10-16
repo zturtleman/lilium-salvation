@@ -2,7 +2,7 @@
 
 **Lilium Salvation** is a fork of [Lilium Arena](https://github.com/zturtleman/lilium-arena) for running [Dark Salvation](https://mangledeyestudios.itch.io/dark-salvation) by Mangled Eye Studios.
 
-Lilium Salvation has only been tested with Dark Salvation 1.06. I have that latest Dark Salvation 1.07 (which is avaialble at [itch.io](https://mangledeyestudios.itch.io/dark-salvation)) but I haven't got around to testing it.
+Lilium Salvation has only been tested with Dark Salvation 1.06. I have that latest Dark Salvation 1.07 (which is available at [itch.io](https://mangledeyestudios.itch.io/dark-salvation)) but I haven't got around to testing it.
 
 Lilium Salvation code commits: [compare/upstream...master](https://github.com/zturtleman/lilium-salvation/compare/upstream...master)
 
