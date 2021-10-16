@@ -6,7 +6,7 @@ Lilium Salvation has only been tested with Dark Salvation 1.06. I have that late
 
 Lilium Salvation code commits: [compare/upstream...master](https://github.com/zturtleman/lilium-salvation/compare/upstream...master)
 
-The engine support was reimplemented without the original source code and may not be network/demo compatible (though neither seem to work anyway). The source code for the Dark Salvation game, cgame, and ui code is not included as has not been released; instead the QVMs in the data files are used.
+The engine support was reimplemented without the original source code and may not be network/demo compatible (though neither seem to work anyway). The source code for the Dark Salvation game, cgame, and ui code is not included as it has not been released; instead the QVMs in the data files are used.
 
 ## Compiling
 
