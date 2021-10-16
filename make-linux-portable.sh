@@ -4,8 +4,8 @@ ERROR=0
 
 # Adjust these for the project.
 CLIENTBIN=liliumsal
-SERVERBIN=liliumsalded
-RENDERER_PREFIX=liliumsal_renderer_
+SERVERBIN=liliumsal-server
+RENDERER_PREFIX=liliumsal-renderer-
 
 # Install directory for Spearmint SDL2 builds (i.e., /home/zack/Local/SDL-2.0.X).
 DIR=/home/zack/Local

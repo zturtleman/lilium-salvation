@@ -115,11 +115,11 @@ CLIENTBIN=liliumsal
 endif
 
 ifndef SERVERBIN
-SERVERBIN=liliumsalded
+SERVERBIN=liliumsal-server
 endif
 
 ifndef RENDERER_PREFIX
-RENDERER_PREFIX=liliumsal_renderer_
+RENDERER_PREFIX=liliumsal-renderer-
 endif
 
 ifndef BASEGAME

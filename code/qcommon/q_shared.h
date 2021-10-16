@@ -74,7 +74,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define BASETA				"missionpack"
 
 #ifndef RENDERER_PREFIX
-  #define RENDERER_PREFIX "liliumsal_renderer_"
+  #define RENDERER_PREFIX "liliumsal-renderer-"
 #endif
 
 #ifndef PRODUCT_VERSION
