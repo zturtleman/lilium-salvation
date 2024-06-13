@@ -596,7 +596,7 @@ issues.
 #define FS_UI_REF		0x02
 #define FS_CGAME_REF	0x04
 // number of id paks that will never be autodownloaded from baseq3/missionpack
-#define NUM_ID_PAKS		5 // darks: 5, q3: 9
+#define NUM_ID_PAKS		6 // darks: 6, q3: 9
 #define NUM_TA_PAKS		4
 
 #define	MAX_FILE_HANDLES	64
