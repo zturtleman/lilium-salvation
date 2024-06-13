@@ -43,5 +43,19 @@
             {"src": "tademo/vm/qagame.qvm", "dst": "/tademo/vm"},
             {"src": "tademo/vm/ui.qvm", "dst": "/tademo/vm"}
         ]
+    },
+    "darks": {
+        "_comment": "darks4.ds1 and darks5.ds1 are optional patches.",
+        "files": [
+            {"src": "darks/darks0.ds1", "dst": "/darks"},
+            {"src": "darks/darks1.ds1", "dst": "/darks"},
+            {"src": "darks/darks2.ds1", "dst": "/darks"},
+            {"src": "darks/darks3.ds1", "dst": "/darks"},
+            {"src": "darks/darks4.ds1", "dst": "/darks"},
+            {"src": "darks/darks5.ds1", "dst": "/darks"},
+            {"src": "darks/vm/cgame.qvm", "dst": "/darks/vm"},
+            {"src": "darks/vm/qagame.qvm", "dst": "/darks/vm"},
+            {"src": "darks/vm/ui.qvm", "dst": "/darks/vm"}
+        ]
     }
 }
